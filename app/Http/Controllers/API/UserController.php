@@ -109,7 +109,7 @@ class UserController extends Controller
         $data = $request->all();
 
         $user = Auth::user();
-        $user->DB::update($data);
+        $user->update($data);
 
         return ResponseFormatter::success($user, 'Profile Update');
     }
@@ -135,7 +135,7 @@ class UserController extends Controller
             // Simpan foto ke database(urlnya)
             $user = Auth::user();
             $user->profile_photo_path = $file;
-            $user->DB::update();
+            $user->update();
 
             return ResponseFormatter::success([$file], 'File successfully uploaded');
         }
